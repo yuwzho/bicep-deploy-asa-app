@@ -8,13 +8,13 @@ param remoteUrl string
 param location string = resourceGroup().location
 
 @description('Azure RoleId that are required for the DeploymentScript resource to import images')
-param rbacRoleNeeded string = 'b24988ac-6180-42a0-ab88-20f7382dd24c' //Contributor is needed to build ACR tasks
+param rbacRoleNeeded string = 'b24988ac-6180-42a0-ab88-20f7382dd24c' //Contributor is needed to require upload url
 
 @description('Does the Managed Identity already exists, or should be created')
 param useExistingManagedIdentity bool = false
 
 @description('Name of the Managed Identity resource')
-param managedIdentityName string = 'id-ContainerRegistryBuild'
+param managedIdentityName string = 'id-springapps-deploy'
 
 @description('For an existing Managed Identity, the Subscription Id it is located in')
 param existingManagedIdentitySubId string = subscription().subscriptionId
@@ -59,7 +59,7 @@ resource deploymentScript 'Microsoft.Resources/deploymentScripts@2020-10-01' = {
     timeout: 'PT10M'
     retentionInterval: 'PT1H'
     cleanupPreference: 'OnSuccess'
-    azCliVersion: '2.45.0'
+    azCliVersion: '2.51.0'
     environmentVariables: [
       {
         name: 'source_url'

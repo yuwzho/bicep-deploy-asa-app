@@ -1,5 +1,5 @@
 resource app 'Microsoft.AppPlatform/Spring/apps@2023-03-01-preview' = {
-  name: 'jeff-std-eus/app-bicep'
+  name: 'df-ae-standard-0911060721/app-bicep'
   properties: {
     public: true
   }
@@ -15,7 +15,7 @@ module upload 'modules/upload.bicep' = {
 
 resource deployment 'Microsoft.AppPlatform/Spring/apps/deployments@2023-03-01-preview' = {
   parent: app
-  name: 'deployment-4191436'
+  name: 'deployment'
   properties: {
     source: {
       relativePath: upload.outputs.relativePath
